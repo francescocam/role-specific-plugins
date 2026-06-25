@@ -145,6 +145,9 @@ def build_source_category_plan(
             "readiness_status": "unverified",
             "eager_read": False,
         }
+        preferred_mcp_servers = list(metadata.get("preferred_mcp_servers") or [])
+        if preferred_mcp_servers:
+            entry["preferred_mcp_servers"] = preferred_mcp_servers
         preferred_plugins = list(metadata.get("preferred_plugins") or [])
         if preferred_plugins:
             entry["preferred_plugins"] = preferred_plugins

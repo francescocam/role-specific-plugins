@@ -5,7 +5,7 @@ Use `skills/user-context/plugin-author-config/source-category-config.json` from 
 ## Ownership
 
 - `.app.json` declares app and connector dependencies the plugin can request. It does not prove installation, authorization, preference, or readability.
-- `skills/user-context/plugin-author-config/source-category-config.json` owns static category ids, labels, and preferred plugins or apps.
+- `skills/user-context/plugin-author-config/source-category-config.json` owns static category ids, labels, and preferred plugins, apps, or MCP servers.
 - `$CODEX_HOME/state/plugins/{marketplace_id}/{plugin_id}/user-context.md` owns durable user-approved source preferences, source-of-truth pointers, and "do not use" rules.
 - `$CODEX_HOME/state/plugins/{marketplace_id}/{plugin_id}/onboarding-state.json` owns operational setup confirmations under `connector_confirmation`.
 - Do not create, read, or migrate `category-state.json`.
@@ -21,12 +21,12 @@ Source route selection belongs in the user-approved Source Setup onboarding step
 During one setup pass:
 
 1. Start from unresolved categories in preflight `source_category_plan`.
-2. Read the session `Available plugins` and `Available skills` blocks. Call `functions.list_available_plugins_to_install` once and reuse the result for every category in the pass. Load `.app.json` only to map preferred app names to declared connector ids.
-3. Prefer a related installed plugin with visible plugin-owned skill or tool surface, then an installable related plugin, then an exposed app or connector, then manual or exported context.
+2. Read the session's available tools, `Available plugins`, and `Available skills` blocks. Treat a preferred MCP server as a candidate only when its scoped tools are exposed in the current runtime. Call `functions.list_available_plugins_to_install` once and reuse the result for every category in the pass. Load `.app.json` only to map preferred app names to declared connector ids.
+3. Prefer an exposed preferred MCP server or a related installed plugin with a visible plugin-owned skill or tool surface, then an installable related plugin, then an exposed app or connector, then manual or exported context.
 4. Ask before installing or authorizing anything. Ask the user to choose only when multiple plausible routes tie, an installable plugin needs approval, no suitable source is exposed, or IT/admin help may be required.
 5. Write the selected operational route under `onboarding-state.json` `connector_confirmation`. Do not write source setup state to `user-context.md`.
 
-A candidate is related when its `name` or `display_name` matches a preferred plugin or app, its `id` clearly names the preferred plugin or app, its `app_connector_ids` intersects the `.app.json` ids for a category preferred app, or its `description` clearly names the same provider or category and no better preferred match exists.
+A candidate is related when its MCP namespace matches a preferred MCP server, its `name` or `display_name` matches a preferred plugin or app, its `id` clearly names the preferred plugin or app, its `app_connector_ids` intersects the `.app.json` ids for a category preferred app, or its `description` clearly names the same provider or category and no better preferred match exists.
 
 If setup finds an installed app or connector and also finds a related plugin candidate, prefer the plugin because plugin-owned skills and tools can add workflow support. Keep the app or connector route as fallback if the user defers plugin installation or install visibility is pending.
 

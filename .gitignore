@@ -1,0 +1,3 @@
+.codex/*
+!.codex/config.example.toml
+.DS_Store

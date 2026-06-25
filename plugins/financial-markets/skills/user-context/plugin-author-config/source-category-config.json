@@ -4,6 +4,9 @@
   "categories": {
     "company_filings_ir": {
       "label": "company filings, IR materials, and reported financials",
+      "preferred_mcp_servers": [
+        "financial_modeling_prep"
+      ],
       "preferred_apps": [
         "Quartr",
         "Daloopa",
@@ -12,6 +15,9 @@
     },
     "earnings_transcripts_presentations": {
       "label": "earnings transcripts, presentations, and events",
+      "preferred_mcp_servers": [
+        "financial_modeling_prep"
+      ],
       "preferred_apps": [
         "Quartr",
         "FactSet",
@@ -33,6 +39,9 @@
     },
     "portfolio_models_trackers": {
       "label": "portfolio, watchlists, models, and thesis trackers",
+      "preferred_mcp_servers": [
+        "financial_modeling_prep"
+      ],
       "preferred_plugins": [
         "Spreadsheets",
         "Microsoft Excel"
@@ -47,6 +56,9 @@
     },
     "market_data_estimates": {
       "label": "market data, consensus, estimates, and ownership",
+      "preferred_mcp_servers": [
+        "financial_modeling_prep"
+      ],
       "preferred_apps": [
         "FactSet",
         "LSEG",

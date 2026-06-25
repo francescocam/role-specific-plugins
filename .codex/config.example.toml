@@ -1,0 +1,14 @@
+# Copy this file to .codex/config.toml after storing the FMP API key in
+# macOS Keychain:
+#
+# security add-generic-password -U \
+#   -a "$USER" \
+#   -s role-specific-plugins-fmp \
+#   -w "YOUR_FMP_API_KEY"
+
+[mcp_servers.financial_modeling_prep]
+command = "/bin/zsh"
+args = ["scripts/start-fmp-mcp.sh"]
+cwd = "/absolute/path/to/role-specific-plugins"
+startup_timeout_sec = 30
+tool_timeout_sec = 60

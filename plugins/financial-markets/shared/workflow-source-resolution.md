@@ -10,8 +10,11 @@ Treat named providers, internal research stores, calendars, email, messaging, do
 
 Load a provider guide only after the current workflow attempts a category, selects that provider as its concrete route, and confirms the scoped route is callable. Do not load provider guides merely because `.app.json` declares the dependency or the source-category plan names a preferred provider.
 
+- If the selected callable route is the `financial_modeling_prep` MCP server, load `skills/public-equity-investing/internal-support/fmp-provider-guide/INTERNAL.md`.
 - If the selected callable route is Daloopa, load `skills/public-equity-investing/internal-support/daloopa-provider-guide/INTERNAL.md`.
 - If the selected callable route is Quartr, load `skills/public-equity-investing/internal-support/quartr-provider-guide/INTERNAL.md`.
+
+For FMP, confirm callability from the exposed `financial_modeling_prep` MCP tools and make the smallest read needed by the active category. Do not infer availability from a project `.codex/config.toml` entry alone. FMP can route `company_filings_ir`, `earnings_transcripts_presentations`, `market_data_estimates`, and read-only market or ownership inputs for `portfolio_models_trackers`. It does not supply internal models, portfolio account state, or a dependable complete investor-presentation archive.
 
 ## Categories
 

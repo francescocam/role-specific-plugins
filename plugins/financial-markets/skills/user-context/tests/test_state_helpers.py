@@ -757,11 +757,36 @@ class PublicEquityInvestingStateHelpersTest(unittest.TestCase):
         self.assertIn("does not", config["description"])
         for category in config["categories"].values():
             self.assertTrue(category["label"])
-            self.assertTrue(category.get("preferred_apps") or category.get("preferred_plugins"))
+            self.assertTrue(
+                category.get("preferred_apps")
+                or category.get("preferred_plugins")
+                or category.get("preferred_mcp_servers")
+            )
             self.assertLessEqual(
                 set(category),
-                {"label", "preferred_apps", "preferred_plugins", "relevant_skills"},
+                {
+                    "label",
+                    "preferred_apps",
+                    "preferred_mcp_servers",
+                    "preferred_plugins",
+                    "relevant_skills",
+                },
             )
+
+        for category_id in (
+            "company_filings_ir",
+            "earnings_transcripts_presentations",
+            "portfolio_models_trackers",
+            "market_data_estimates",
+        ):
+            self.assertIn(
+                "financial_modeling_prep",
+                config["categories"][category_id]["preferred_mcp_servers"],
+            )
+        self.assertNotIn(
+            "preferred_mcp_servers",
+            config["categories"]["internal_research"],
+        )
 
     def test_source_setup_reference_keeps_discovery_out_of_preflight(self) -> None:
         onboarding_text = ONBOARDING_REFERENCE.read_text(encoding="utf-8")
@@ -812,6 +837,20 @@ class PublicEquityInvestingStateHelpersTest(unittest.TestCase):
             self.assertTrue(category["setup_required"])
             self.assertFalse(category["eager_read"])
             self.assertNotIn("configured_route", category)
+        for category_id in (
+            "company_filings_ir",
+            "earnings_transcripts_presentations",
+            "portfolio_models_trackers",
+            "market_data_estimates",
+        ):
+            self.assertIn(
+                "financial_modeling_prep",
+                plan["categories"][category_id]["preferred_mcp_servers"],
+            )
+        self.assertNotIn(
+            "preferred_mcp_servers",
+            plan["categories"]["internal_research"],
+        )
         self.assertFalse((self.state_dir / "category-state.json").exists())
 
     def test_preflight_echoes_saved_source_route_without_claiming_readiness(self) -> None:

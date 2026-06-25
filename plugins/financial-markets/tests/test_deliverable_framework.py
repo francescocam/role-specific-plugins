@@ -107,6 +107,7 @@ INTERNAL_SUPPORT_PLAYBOOKS = {
     "dashboard-builder",
     "excel-data-cleaner",
     "financial-source-of-truth",
+    "fmp-provider-guide",
     "quartr-provider-guide",
     "sector-context-overlay",
     "style-guide-adapter",
@@ -403,7 +404,7 @@ class DeliverableFrameworkTests(unittest.TestCase):
     def test_provider_guides_load_only_for_callable_selected_routes(self) -> None:
         text = read("shared/workflow-source-resolution.md")
         self.assertIn("Do not load provider guides merely because `.app.json` declares", text)
-        for provider in ["daloopa", "quartr"]:
+        for provider in ["daloopa", "fmp", "quartr"]:
             with self.subTest(provider=provider):
                 self.assertIn(
                     f"skills/public-equity-investing/internal-support/{provider}-provider-guide/INTERNAL.md",

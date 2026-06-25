@@ -16,6 +16,7 @@ These capabilities are packaged with this plugin but are not registered `SKILL.m
 | `excel-data-cleaner` | `internal-support/excel-data-cleaner/INTERNAL.md` | Preserve ticker, period, unit, timestamp, and equity-workflow identifiers. |
 | `style-guide-adapter` | `internal-support/style-guide-adapter/INTERNAL.md` | Restyle without changing facts, formulas, citations, or investment conclusions. |
 | `sector-context-overlay` | `internal-support/sector-context-overlay/INTERNAL.md` | Supply sector lens only under an owning listed-equity workflow. |
+| `fmp-provider-guide` | `internal-support/fmp-provider-guide/INTERNAL.md` | Shape scoped Financial Modeling Prep MCP calls and preserve provider provenance. |
 | `daloopa-provider-guide` | `internal-support/daloopa-provider-guide/INTERNAL.md` | Shape bounded, explicit-period Daloopa calls and preserve provider citations. |
 | `quartr-provider-guide` | `internal-support/quartr-provider-guide/INTERNAL.md` | Shape bounded Quartr filing, document, event, and standardized-financial calls with provenance. |
 
@@ -28,7 +29,7 @@ After the plugin invocation gate passes, a visible owning workflow may load an i
 For an explicit support-only request within Public Equity Investing, such as cleaning an equity workbook, applying a style guide, checking sources, or rendering an already-defined dashboard, the root router coordinates the request and loads the matching internal playbook.
 Use `standalone_support_request` as the owning workflow where the playbook requires one, and preserve its support-artifact/readiness rules.
 
-Provider guides are narrower: load one only after an ordinary workflow attempts a semantic source category, selects Quartr or Daloopa as the concrete route, and confirms that route is callable in the current runtime. Do not load provider guides during preflight, onboarding, broad setup, or merely because `.app.json` declares a dependency.
+Provider guides are narrower: load one only after an ordinary workflow attempts a semantic source category, selects FMP, Quartr, or Daloopa as the concrete route, and confirms that route is callable in the current runtime. Do not load provider guides during preflight, onboarding, broad setup, or merely because `.app.json`, project configuration, or preference hints declare a dependency.
 
 ## Customization Boundary
 
