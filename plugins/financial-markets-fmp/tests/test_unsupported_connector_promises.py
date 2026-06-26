@@ -324,6 +324,36 @@ class UnsupportedConnectorPromisesTests(unittest.TestCase):
         ]:
             self.assertIn(phrase, text)
 
+    def test_migration_playbook_preserves_non_deterministic_refresh_contract(self) -> None:
+        text = "\n".join(
+            [
+                read("../../docs/financial-markets-fmp-migration-playbook.md"),
+                read("FORK.md"),
+            ]
+        )
+
+        for phrase in [
+            "Use instructions as a migration compass",
+            "patches as acceleration",
+            "tests as guardrails",
+            "one semantic review pass",
+            "not to rediscover the FMP migration",
+            "avoid blindly applying an old full-tree patch",
+            "clean text that is semantically wrong",
+            "FMP is the default structured public-market route",
+            "Do not claim that FMP replaces",
+            "private-company or private-market datasets",
+            "expert-network systems",
+            "brokerage, account, order, execution, or buying-power systems",
+            "internal document, email, chat, drive, or collaboration repositories",
+            "FMP-standardized facts are not primary-source facts unless reconciled",
+            "Preserve native currency",
+            "listing-level versus operating-company-level distinctions",
+            "Canonical smoke prompts",
+            "Handoff report template",
+        ]:
+            self.assertIn(phrase, text)
+
 
 if __name__ == "__main__":
     unittest.main()
