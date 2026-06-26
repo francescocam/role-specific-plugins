@@ -18,7 +18,7 @@ available to the target workspace.
 | --- | --- | --- |
 | [Data Analytics](./plugins/data-analytics) | Query, visualize, explain, and validate datasets; build dashboards; and investigate metrics. | Databricks, Snowflake, BigQuery, Hex, Amplitude, Mixpanel, Statsig, Metabase, ThoughtSpot, Google Drive, Slack, Microsoft 365, and more |
 | [Product Design](./plugins/product-design) | Create product specs, prototypes, UI critiques, and product design artifacts. | Sites |
-| [Financial Markets](./plugins/financial-markets) | Build public-equity research, earnings analysis, valuation work, model updates, long/short pitches, risk reviews, dashboards, and investment memos. | FactSet, LSEG, Morningstar, Daloopa, Quartr, S&P, PitchBook, Slack, Google Drive, Gmail, SharePoint, Teams, and more |
+| [Financial Markets (FMP-first fork)](./plugins/financial-markets-fmp) | Build public-equity research, earnings analysis, valuation work, model updates, long/short pitches, risk reviews, dashboards, and investment memos with FMP as the default structured public-market data provider. | Financial Modeling Prep, optional document/collaboration connectors, and user-provided specialist exports |
 
 ## Repository Layout
 
@@ -28,7 +28,7 @@ available to the target workspace.
 `-- plugins/
     |-- data-analytics/
     |-- product-design/
-    `-- financial-markets/
+    `-- financial-markets-fmp/
 ```
 
 Each plugin generally follows this structure:

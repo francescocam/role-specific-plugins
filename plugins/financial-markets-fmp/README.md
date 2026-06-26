@@ -1,18 +1,20 @@
-# Public Equity Investing
+# Financial Markets (FMP-first fork)
+
+This is a local FMP-first fork of OpenAI’s Financial Markets plugin. It is not the official OpenAI distribution.
 
 Make sense of market and company information, pressure-test investment theses, and track what is changing.
 
 ## When to use this plugin
 
-Use Public Equity Investing when you need to review earnings, compare companies, track signals, assess whether an investment thesis is strengthening or weakening, update valuation work, generate ideas, or prepare investor-facing research artifacts. It is designed for long-only investors, long/short teams, sell-side research, event-driven investors, and ETF or index diligence. Use Credit Markets instead when the core question is about debt securities, spreads, yields, covenants, distressed recovery, or creditworthiness.
+Use Financial Markets (FMP-first fork) when you need to review earnings, compare companies, track signals, assess whether an investment thesis is strengthening or weakening, update valuation work, generate ideas, or prepare investor-facing research artifacts. It is designed for long-only investors, long/short teams, sell-side research, event-driven investors, and ETF or index diligence. Use Credit Markets instead when the core question is about debt securities, spreads, yields, covenants, distressed recovery, or creditworthiness.
 
 ## Optional onboarding
 
 Ask Codex:
 
-`@Public Equity Investing Help me get started`
+`@Financial Markets (FMP-first fork) Help me get started`
 
-Public Equity Investing has an optional onboarding flow that helps you save useful output and audience defaults, choose the tools and sources to use, decide whether to add a weekday source check, and pick a first workflow.
+Financial Markets (FMP-first fork) has an optional onboarding flow that helps you save useful output and audience defaults, choose the tools and sources to use, decide whether to add a weekday source check, and pick a first workflow.
 
 Optional onboarding is an interactive, step-by-step conversation that runs only when you ask for it. Codex will guide you through setup, ask for approval before making changes, and help you try a first workflow.
 
@@ -48,7 +50,7 @@ Hero workflows are bolded.
 
 ## Integrations
 
-Public Equity Investing can use available tools when they are connected:
+Financial Markets (FMP-first fork) can use available tools when they are connected:
 
 | Source category | Default / optional routes | What they unlock |
 | --- | --- | --- |

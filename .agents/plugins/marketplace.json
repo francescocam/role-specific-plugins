@@ -29,10 +29,10 @@
       "category": "Design"
     },
     {
-      "name": "financial-markets",
+      "name": "financial-markets-fmp",
       "source": {
         "source": "local",
-        "path": "./plugins/financial-markets"
+        "path": "./plugins/financial-markets-fmp"
       },
       "policy": {
         "installation": "AVAILABLE",

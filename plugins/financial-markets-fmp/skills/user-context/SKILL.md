@@ -12,7 +12,7 @@ This skill owns the Public Equity Investing plugin's local user-context storage 
 Store Public Equity Investing state under:
 
 ```text
-$CODEX_HOME/state/plugins/role-specific-plugins/financial-markets/
+$CODEX_HOME/state/plugins/role-specific-plugins/financial-markets-fmp/
 ```
 
 The storage foundation owns only:

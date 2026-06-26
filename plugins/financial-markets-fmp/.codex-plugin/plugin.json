@@ -1,0 +1,57 @@
+{
+  "name": "financial-markets-fmp",
+  "version": "0.1.27+codex.20260626090654",
+  "description": "Fork of OpenAI Financial Markets, customized for Financial Modeling Prep as the default structured public-market data provider. Public equity investing workflows for listed-company research, earnings analysis, valuation, model updates, long/short pitches, catalysts, thesis tracking, ETF/index and constituent diligence, risk sizing, hedging, dashboards, and investment memos.",
+  "author": {
+    "name": "Francesco Camisa"
+  },
+  "homepage": "https://github.com/openai/role-specific-plugins",
+  "repository": "https://github.com/openai/role-specific-plugins/tree/main/plugins/financial-markets",
+  "license": "MIT",
+  "keywords": [
+    "financial-markets-fmp",
+    "financial-markets",
+    "public-equity-investing",
+    "public-equity",
+    "listed-equities",
+    "equity-research",
+    "long-only",
+    "hedge-fund",
+    "long-short",
+    "earnings",
+    "valuation",
+    "catalysts",
+    "investment-memo",
+    "etf-index-diligence",
+    "benchmark-relative-equity",
+    "sell-side-research",
+    "public-equity-diligence",
+    "portfolio-manager"
+  ],
+  "skills": "./skills/",
+  "apps": "./.app.json",
+  "interface": {
+    "displayName": "Financial Markets (FMP-first fork)",
+    "shortDescription": "Fork of OpenAI Financial Markets, customized for Financial Modeling Prep as the default structured public-market data provider.",
+    "longDescription": "This is a local FMP-first fork of OpenAI's Financial Markets plugin. It is not the official OpenAI distribution. It keeps the public-equity investing workflows for long-only investors, long/short hedge funds, sell-side equity research teams, ETF/index and constituent diligence, event-driven equity investors, and sector/thematic listed-equity research teams, while routing structured public-market data to Financial Modeling Prep by default. Outputs should surface what is mispriced, what is priced in, what proves or kills the thesis, what to do next, and what evidence is missing. Use Credit Markets for credit instruments, creditworthiness, restructuring, distressed, recovery, spreads, yields, covenants, and debt security analysis.",
+    "developerName": "Francesco Camisa",
+    "category": "Business",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/openai/role-specific-plugins/tree/main/plugins/financial-markets",
+    "privacyPolicyURL": "https://github.com/openai/role-specific-plugins/tree/main/plugins/financial-markets",
+    "termsOfServiceURL": "https://github.com/openai/role-specific-plugins/tree/main/plugins/financial-markets",
+    "defaultPrompt": [
+      "Help me get started",
+      "Analyze Apple's latest earnings: what changed, what is priced in, and what should an investor watch next",
+      "Screen listed-equity beneficiaries of AI data-center power demand and rank the best ideas, risks, and false positives"
+    ],
+    "brandColor": "#2563EB",
+    "composerIcon": "./assets/composerIcon.svg",
+    "logo": "./assets/logo.png",
+    "screenshots": []
+  }
+}

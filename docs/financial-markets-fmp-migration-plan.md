@@ -19,7 +19,7 @@ retrieval time, period, currency, and evidence classification.
 - The Financial Markets plugin does not currently declare an FMP route in its
   plugin metadata, source-category configuration, workflow routing, or provider
   guides.
-- `plugins/financial-markets/.app.json` currently declares placeholder
+- `plugins/financial-markets-fmp/.app.json` currently declares placeholder
   integrations for PitchBook, FactSet, Morningstar, LSEG, S&P, Third Bridge,
   Daloopa, Quartr, and Alpaca. Because these entries are not marked optional,
   the plugin appears to require services that are not necessary for an
@@ -369,5 +369,5 @@ Final validation on June 26, 2026:
 
 - `.app.json` and source-category JSON parsed successfully.
 - Focused Public Equity/FMP tests passed.
-- Full `plugins/financial-markets` test discovery passed.
+- Full `plugins/financial-markets-fmp` test discovery passed.
 - `git diff --check` passed.
