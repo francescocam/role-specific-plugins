@@ -50,11 +50,16 @@ Hero workflows are bolded.
 
 Public Equity Investing can use available tools when they are connected:
 
-| Source | Supported integrations | What they unlock |
+| Source category | Default / optional routes | What they unlock |
 | --- | --- | --- |
-| Market and company data | FactSet, LSEG, S&P, Moody's, Morningstar, Daloopa, Quartr | Source-backed company research, market context, financial analysis, valuation, transcripts, and earnings work |
-| Research and diligence context | PitchBook, Third Bridge, Datasite, Hebbia | Additional company, industry, expert, diligence, and source-document context when available |
-| Brokerage context | Alpaca | Available portfolio or market context for supported workflows |
-| Collaboration and documents | Slack, Google Drive, Gmail, Outlook Email, SharePoint, Microsoft Teams | Research inputs, source documents, internal context, and controlled handoff |
+| Structured public-market data | Financial Modeling Prep through the configured `financial_modeling_prep` MCP server | Public-company profiles, quotes, price history, reported financials, estimates, ownership, transcripts, SEC filing discovery, calendars, news, and supported ETF/index context |
+| Primary and IR documents | Issuer filings, company IR pages, uploaded files, pasted excerpts, or optional document connectors such as Google Drive and SharePoint | Primary-source verification, investor decks, earnings releases, filings, transcript support, and source packages |
+| Optional specialist public-equity providers | User-provided exports or callable routes for FactSet, LSEG, S&P Capital IQ, Morningstar, Daloopa, Quartr, Moody's, Bloomberg-like, or broker sources | Additional vendor-standardized datasets, broker/consensus context, specialist KPI extraction, presentation archives, or provider-specific audit trails when available |
+| Optional private-market research | User-provided exports or callable routes for PitchBook, Datasite, Hebbia, or similar diligence tools | Private-company, transaction, fund, and diligence-document context that FMP does not provide |
+| Optional expert research | User-provided exports or callable routes for Third Bridge or similar expert-network tools | Expert-call notes, interview context, and expert-network materials that FMP does not provide |
+| Optional brokerage context | User-provided exports or callable brokerage routes such as Alpaca | Account, position, order, execution, and buying-power context; FMP is not a brokerage system |
+| Optional internal collaboration | Google Drive, Gmail, Outlook Email, SharePoint, Microsoft Teams, Slack, or uploaded/pasted materials | Research inputs, source documents, internal context, and controlled handoff when the user authorizes those sources |
 
 Connected sources improve grounding, but you can also begin with uploaded files, exported data, pasted excerpts, existing workbooks, and manually provided assumptions.
+
+FMP is the default structured public-market route for this plugin, but it does not replace private-company datasets, expert networks, brokerage/account systems, or internal document and collaboration repositories.

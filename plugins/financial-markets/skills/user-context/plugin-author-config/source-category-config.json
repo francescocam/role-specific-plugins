@@ -8,9 +8,8 @@
         "financial_modeling_prep"
       ],
       "preferred_apps": [
-        "Quartr",
-        "Daloopa",
-        "Google Drive"
+        "Google Drive",
+        "Microsoft SharePoint"
       ]
     },
     "earnings_transcripts_presentations": {
@@ -19,10 +18,8 @@
         "financial_modeling_prep"
       ],
       "preferred_apps": [
-        "Quartr",
-        "FactSet",
-        "LSEG",
-        "S&P"
+        "Google Drive",
+        "Microsoft SharePoint"
       ]
     },
     "internal_research": {
@@ -33,8 +30,7 @@
         "Slack",
         "Microsoft Teams",
         "Gmail",
-        "Outlook Email",
-        "Third Bridge"
+        "Outlook Email"
       ]
     },
     "portfolio_models_trackers": {
@@ -48,24 +44,13 @@
       ],
       "preferred_apps": [
         "Google Drive",
-        "Microsoft SharePoint",
-        "FactSet",
-        "Morningstar",
-        "Alpaca"
+        "Microsoft SharePoint"
       ]
     },
     "market_data_estimates": {
       "label": "market data, consensus, estimates, and ownership",
       "preferred_mcp_servers": [
         "financial_modeling_prep"
-      ],
-      "preferred_apps": [
-        "FactSet",
-        "LSEG",
-        "S&P",
-        "Morningstar",
-        "Daloopa",
-        "Alpaca"
       ]
     }
   }

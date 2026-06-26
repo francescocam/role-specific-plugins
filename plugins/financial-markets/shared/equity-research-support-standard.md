@@ -33,7 +33,9 @@ Every substantial support output should surface:
 
 ## Connector Honesty Rule
 
-Never imply live Bloomberg, FactSet, S&P Capital IQ, CapIQ, LSEG, Refinitiv, Daloopa, PitchBook, Morningstar, broker, email, collaboration-app, or internal data-system access unless that connector/app/tool is actually callable in the current runtime. If unavailable, use user-provided exports, request the export, label the gap as `missing_required_source`, and keep the output `preliminary`, `screen-grade`, or `not supportable` as appropriate.
+Use callable `financial_modeling_prep` as the normal structured public-market data route when it is exposed in the runtime. Never imply live Bloomberg, FactSet, S&P Capital IQ, CapIQ, LSEG, Refinitiv, Daloopa, PitchBook, Morningstar, broker, email, collaboration-app, or internal data-system access unless that connector/app/tool is actually callable in the current runtime. If unavailable, use user-provided exports, request the export, label the gap as `missing_required_source`, and keep the output `preliminary`, `screen-grade`, or `not supportable` as appropriate.
+
+When `financial_modeling_prep` is callable, identify it as a provider-standardized public-market data route, not as primary-source verification, brokerage/account state, private-market coverage, or internal research access. Preserve FMP endpoint/request metadata, source dates, identifiers, currency/units, and data-quality flags for material values.
 
 ## Credit Markets Boundary
 

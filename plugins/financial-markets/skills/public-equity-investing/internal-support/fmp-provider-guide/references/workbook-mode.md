@@ -13,9 +13,12 @@ Load this reference only when a routed workflow uses FMP while reading or editin
 
 - Never overwrite analyst-created formulas, assumptions, notes, or formatting without asking.
 - Put imported provider data on a clearly named raw-data tab such as `FMP_Data` unless the user requests another layout.
-- Preserve symbol, exchange, endpoint, parameters, period or as-of date, currency, units, retrieval time, and source URL where available.
+- Preserve symbol, exchange, CIK, ISIN, CUSIP, FMP tool or endpoint name, request parameters, period or as-of date, fiscal year, period end, filing date, currency, units, retrieval time, and source URL where available.
+- Add columns for evidence label, freshness status, listing-versus-company treatment, data-quality flags, and primary-source reconciliation status when FMP values feed model outputs.
+- Store FX rate, FX observation date, FX source, and native currency when cross-market or translated values are imported.
 - Put analyst assumptions on an `Inputs` or `Assumptions` tab.
 - Keep formulas on model or output tabs, not in the raw-data area.
 - Do not represent FMP as the source of internal portfolio positions or workbook-authored values.
+- Do not replace source-reported workbook values with FMP-standardized values unless the user requests the replacement or a reconciliation tab preserves both.
 - Preserve the workbook's existing formatting unless the user asks for a redesign.
 - After edits, summarize changed tabs and ranges.

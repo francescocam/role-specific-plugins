@@ -5,7 +5,7 @@ Use the highest-quality available source for each event. Prefer in this order:
 1. User-provided materials, callable connected routes, and exports: portfolio exports, watchlists, models, research notes, internal calendars, CRM/IR notes, Slack/email summaries, Drive files, and approved market-data connectors.
 2. Primary company sources: IR calendars, press releases, SEC/SEDAR/market filings, earnings releases, shareholder materials, prospectuses, registration statements, merger documents, event pages, and company presentation decks.
 3. Regulator, court, exchange, and official calendars: SEC, FDA, EMA, CMS, FTC/DOJ, EU regulators, court dockets, exchange notices, index providers, central banks, treasury, BLS/BEA/Census/FRED, and other official agencies.
-4. Trusted market-data and research routes or exports: FactSet, Bloomberg, LSEG, S&P Capital IQ, Visible Alpha, AlphaSense, Daloopa, Quartr, broker research, exchange calendars, and industry databases, subject to runtime availability and entitlement.
+4. Trusted market-data and research routes or exports: callable `financial_modeling_prep` for ordinary public-market calendars, news, filings, estimates, ownership, and market data; or FactSet, Bloomberg, LSEG, S&P Capital IQ, Visible Alpha, AlphaSense, Daloopa, Quartr, broker research, exchange calendars, and industry databases through a callable route or user-provided export, subject to runtime availability and entitlement.
 5. Reputable press and web sources, used as fallback or corroboration. Do not treat press speculation as a confirmed date.
 6. User-provided assumptions, explicitly labeled as assumptions.
 

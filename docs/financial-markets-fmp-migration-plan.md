@@ -153,46 +153,60 @@ Acceptance criteria:
 
 ### Phase 2: Define the FMP evidence and normalization contract
 
-The FMP provider guide should require:
+Status: **complete** as of June 26, 2026.
 
-- stable endpoint name and request parameters;
-- symbol, exchange, CIK/ISIN/CUSIP where returned;
-- retrieval timestamp and source as-of date;
-- fiscal year, period, filing date, currency, and units for financials;
-- native currency and explicit FX metadata for cross-market calculations;
-- a distinction between listing-level and operating-company-level data;
-- `fact_provider_standardized` for FMP-normalized fields;
-- `estimate_consensus` for FMP estimates;
-- `fact_source_reported` only when the value is verified directly in a linked
+The FMP provider guide now requires:
+
+- **Complete:** stable FMP tool or endpoint name and request parameters.
+- **Complete:** symbol, exchange, CIK/ISIN/CUSIP, and other returned identifiers.
+- **Complete:** retrieval timestamp and source/provider as-of date.
+- **Complete:** fiscal year, period, filing date, currency, and units for financials.
+- **Complete:** native currency and explicit FX metadata for cross-market calculations.
+- **Complete:** a distinction between listing-level and operating-company-level data.
+- **Complete:** `fact_provider_standardized` for FMP-normalized fields.
+- **Complete:** `estimate_consensus` for FMP estimates, ratings, price targets, and forecasts.
+- **Complete:** `fact_source_reported` only when the value is verified directly in a linked
   filing or issuer document;
-- primary-source reconciliation for material values;
-- no promotion of FMP ratios, scores, key metrics, owner earnings, or valuation
+- **Complete:** primary-source reconciliation for material values.
+- **Complete:** no promotion of FMP ratios, scores, key metrics, owner earnings, or valuation
   outputs to canonical plugin metrics without an approved formula;
-- visible data-quality flags for stale, missing, conflicting, or suspicious
+- **Complete:** visible data-quality flags for stale, missing, conflicting, or suspicious
   values.
 
-The guide must also document known FMP hazards:
+The guide also documents known FMP hazards:
 
-- secondary listings can carry full-company market capitalization;
-- country is not a substitute for exchange/venue;
-- pence/pounds and other currency-unit issues need field-specific treatment;
-- estimates and ratings are provider aggregates, not a substitute for
+- **Complete:** secondary listings can carry full-company market capitalization.
+- **Complete:** country is not a substitute for exchange/venue.
+- **Complete:** pence/pounds and other currency-unit issues need field-specific treatment.
+- **Complete:** estimates and ratings are provider aggregates, not a substitute for
   broker-level estimate detail;
-- transcript, ESG, 13F, and other endpoint availability is plan-dependent;
-- U.S. SEC coverage is not equivalent to complete global filing coverage.
+- **Complete:** transcript, ESG, 13F, and other endpoint availability is plan-dependent.
+- **Complete:** U.S. SEC coverage is not equivalent to complete global filing coverage.
+
+Acceptance criteria:
+
+- FMP-sourced material values have endpoint/request, identifier, period, currency,
+  unit, retrieval, as-of, evidence-label, and quality-flag requirements.
+- FMP provider-standardized fields and FMP estimates are not confused with
+  primary-source facts or issuer guidance.
+- Cross-market, secondary-listing, and endpoint-entitlement hazards are explicit
+  in both the provider guide and normalization protocol.
 
 ### Phase 3: Replace connector requirements
 
-1. Remove the default placeholder entries for FactSet, LSEG, S&P, Morningstar,
+Status: **complete** as of June 26, 2026.
+
+1. **Complete:** Removed the default placeholder entries for FactSet, LSEG, S&P, Morningstar,
    Daloopa, and Quartr from `.app.json`.
-2. Remove Alpaca unless the plugin intentionally supports account, position, or
-   execution workflows; otherwise retain it as optional and document the narrow
-   reason.
-3. Mark PitchBook and Third Bridge optional if their private-market or
-   expert-network workflows remain in scope.
-4. Mark collaboration/document apps optional unless installation genuinely
-   requires them.
-5. Update the README integration table to place FMP first and separate:
+2. **Complete:** Removed the Alpaca placeholder from `.app.json`; brokerage remains
+   documented only as an optional export or callable route for account, position,
+   order, execution, and buying-power context.
+3. **Complete:** Removed PitchBook and Third Bridge placeholders from `.app.json`;
+   the README keeps private-market and expert-network routes optional via
+   user-provided exports or callable routes.
+4. **Complete:** Marked installed collaboration/document app connectors optional
+   and removed placeholder collaboration entries.
+5. **Complete:** Updated the README integration table to place FMP first and separate:
    - structured public-market data;
    - primary/IR documents;
    - private-market research;
@@ -209,71 +223,106 @@ Acceptance criteria:
 
 ### Phase 4: Map workflows to FMP endpoints
 
-Create a tested mapping table in the FMP provider guide. At minimum:
+Status: **complete** as of June 26, 2026.
+
+Created a tested mapping table in the FMP provider guide. At minimum:
 
 | Workflow need | FMP route |
 | --- | --- |
-| Current price and market cap | quote / company market-cap |
-| Price and volume history | historical stock chart |
-| Company identity and listing metadata | company profile and directory |
-| Reported statements | standardized and as-reported statements |
-| Enterprise value inputs | enterprise values plus cited statement inputs |
-| Consensus and expectation bar | financial estimates, price targets, ratings |
-| Earnings dates and surprises | earnings calendar/company earnings |
-| Transcripts | earnings transcript search |
-| SEC filings | SEC filing search and linked primary filing |
-| Revenue segments | product and geographic segmentation |
-| Institutional ownership | Form 13F endpoints |
-| Insider activity | insider-trade endpoints |
-| ETF/index exposure | ETF holdings and supported index constituents |
-| Corporate actions | dividend, split, and IPO calendars |
-| Macro context | economics calendar, indicators, treasury rates, risk premium |
-| News and issuer releases | stock news, general news, and press releases |
+| **Complete:** Current price and market cap | quote / company market-cap |
+| **Complete:** Price and volume history | historical stock chart |
+| **Complete:** Company identity and listing metadata | company profile, directory, and search |
+| **Complete:** Reported statements | standardized and as-reported statements |
+| **Complete:** Enterprise value inputs | enterprise values plus cited statement, share-count, and market inputs |
+| **Complete:** Consensus and expectation bar | financial estimates, price targets, ratings |
+| **Complete:** Earnings dates and surprises | earnings calendar/company earnings |
+| **Complete:** Transcripts | earnings transcript search/date routes |
+| **Complete:** SEC filings | SEC filing search and linked primary filing |
+| **Complete:** Revenue segments | product and geographic segmentation |
+| **Complete:** Institutional ownership | Form 13F endpoints |
+| **Complete:** Insider activity | insider-trade endpoints |
+| **Complete:** ETF/index exposure | ETF holdings and supported index constituents |
+| **Complete:** Corporate actions | dividend, split, and IPO calendars |
+| **Complete:** Macro context | economics calendar, indicators, treasury rates, risk premium |
+| **Complete:** News and issuer releases | stock news, general news, and press releases |
 
-For every mapping, define freshness, minimum required identifiers, pagination,
-empty-result behavior, and fallback source.
+For every mapping, the guide defines freshness, minimum required identifiers,
+pagination or date bounds, empty-result behavior, and fallback source.
 
 ### Phase 5: Add coverage and regression tests
 
 Add tests that verify:
 
-1. FMP is listed in the intended source categories.
-2. FMP is not presented as a brokerage, private-market, expert-network, or
+Status: **complete** as of June 26, 2026.
+
+Added deterministic regression tests that verify:
+
+1. **Complete:** FMP is listed in the intended source categories.
+2. **Complete:** FMP is not presented as a brokerage, private-market, expert-network, or
    internal-document source.
-3. Provider values receive the correct evidence labels.
-4. Estimates remain distinct from reported facts and user assumptions.
-5. Provider ratios and scores are not silently used as canonical calculations.
-6. Cross-listed securities preserve listing grain and currency.
-7. Workflows downgrade gracefully to `missing_required_source`,
+3. **Complete:** Provider values receive the correct evidence labels.
+4. **Complete:** Estimates remain distinct from reported facts and user assumptions.
+5. **Complete:** Provider ratios and scores are not silently used as canonical calculations.
+6. **Complete:** Cross-listed securities preserve listing grain and currency.
+7. **Complete:** Workflows downgrade gracefully to `missing_required_source`,
    `preliminary`, or `screen-grade` when FMP lacks required evidence.
-8. Legacy Daloopa and Quartr guides are loaded only if those routes remain
+8. **Complete:** Legacy Daloopa and Quartr guides are loaded only if those routes remain
    installed, callable, and explicitly selected.
-9. The plugin contains no mandatory placeholder IDs for removed providers.
-10. Documentation and `.app.json` remain consistent.
+9. **Complete:** The plugin contains no mandatory placeholder IDs for removed providers.
+10. **Complete:** Documentation and `.app.json` remain consistent.
 
-Run representative integration checks for:
+Representative live FMP MCP checks performed on June 26, 2026:
 
-- one large U.S. issuer;
-- one non-U.S. primary listing;
-- one ADR or secondary listing;
-- one bank or insurer;
-- one ETF;
-- one issuer with non-calendar fiscal years;
-- one small-cap issuer with sparse estimates;
-- one recent IPO or newly public company.
+| Coverage lane | Check performed | Result |
+| --- | --- | --- |
+| Large U.S. issuer | AAPL quote and annual income statement | Route returned quote, market cap, fiscal-year statement, filing date, CIK, currency, and period metadata. |
+| Non-U.S. primary listing | SAP.DE company profile | Route returned XETRA listing metadata, EUR currency, ISIN, exchange, and country fields. |
+| ADR or secondary listing | NVD.DE company profile | Route returned a XETRA secondary listing with EUR currency and full-company-scale market cap, confirming the listing-grain hazard the guide now flags. |
+| Bank or insurer | JPM annual balance sheet | Route returned bank balance-sheet fields with fiscal-year, filing date, CIK, currency, and period metadata. |
+| ETF | SPY holdings | Route returned holdings, weights, ISIN/CUSIP, market values, and `updatedAt` timestamps. |
+| Non-calendar fiscal year | WMT annual income statement | Route returned FY2026 period ending January 31, 2026, validating non-calendar fiscal-year metadata preservation. |
+| Small-cap sparse estimates | RKLB annual financial estimates | Route returned provider estimates with low analyst counts, validating `estimate_consensus` labeling and sparse-estimate caveats. |
+| Recent IPO / newly public company | ARM company profile | Route returned IPO date, ADR flag, identifiers, exchange, and listing metadata. |
 
 ### Phase 6: Decommission legacy defaults
 
+Status: **complete** as of June 26, 2026.
+
 After the acceptance suite passes:
 
-1. Remove legacy providers from onboarding preference hints.
-2. Remove or archive Daloopa/Quartr provider guides only if optional support for
-   those providers is intentionally discontinued.
-3. Update all examples, source hierarchies, unsupported-connector warnings, and
+1. **Complete:** Removed legacy providers from onboarding preference hints.
+2. **Complete:** Retained Daloopa/Quartr provider guides because optional support for
+   those providers is not intentionally discontinued; the guides now remain
+   optional and load only after a route is installed, callable, and selected.
+3. **Complete:** Updated examples, source hierarchies, unsupported-connector warnings, and
    tests to mention FMP as the normal structured-data route.
-4. Keep generic language allowing user-provided institutional-provider exports.
-5. Publish a migration note explaining the capabilities that now require a
+4. **Complete:** Kept generic language allowing user-provided institutional-provider exports.
+5. **Complete:** Published the migration note below explaining the capabilities that now require a
    primary-source fallback or an optional specialist provider.
+
+#### Migration note: post-FMP-first specialist coverage
+
+FMP is now the default structured public-market data route for Public Equity
+Investing workflows when `financial_modeling_prep` is callable. It is suitable
+for ordinary public-company profiles, quotes, price history, statements,
+estimates, ownership, transcripts, SEC filing discovery, calendars, news, and
+supported ETF/index context, subject to entitlement and coverage.
+
+The migration intentionally removes legacy paid providers from default setup
+hints and install-time expectations. FactSet, LSEG, S&P Capital IQ,
+Morningstar, Daloopa, Quartr, Bloomberg-like systems, broker sources, Alpaca,
+PitchBook, Third Bridge, Datasite, Hebbia, and collaboration/document systems
+remain usable only when the runtime exposes a scoped callable route or the user
+provides an export/file. FMP does not replace those sources for private-company
+datasets, expert networks, broker-by-broker estimate detail, brokerage account
+state, official licensed index files, specialist KPI extraction, complete IR
+document/webcast archives, internal research repositories, or transaction data
+rooms.
+
+When FMP lacks a required lane, workflows should request the precise primary
+source, user export, or optional specialist route and label the gap as
+`missing_required_source`, `preliminary`, or `screen-grade` rather than
+silently substituting unsupported data.
 
 ## Capability Gaps Requiring a Non-FMP Source
 
@@ -301,17 +350,24 @@ brokerage route for positions,” or “upload the investor presentation.”
 
 ## Definition of Done
 
-The migration is complete when:
+Status: **done** as of June 26, 2026.
 
-- FMP is the default callable structured-data route for public-equity workflows;
-- the plugin installs without requiring unrelated paid-provider credentials;
-- all FMP-derived data has explicit provenance, period, currency, freshness, and
+- **Complete:** FMP is the default callable structured-data route for public-equity workflows.
+- **Complete:** The plugin installs without requiring unrelated paid-provider credentials.
+- **Complete:** All FMP-derived data has explicit provenance, period, currency, freshness, and
   evidence labels;
-- primary filings outrank conflicting standardized provider values;
-- specialist capabilities are clearly optional and never attributed to FMP;
-- representative U.S., international, cross-listed, sparse-data, and fund
-  workflows pass;
-- the repository contains no exposed FMP credential.
+- **Complete:** Primary filings outrank conflicting standardized provider values.
+- **Complete:** Specialist capabilities are clearly optional and never attributed to FMP.
+- **Complete:** Representative U.S., international, cross-listed, sparse-data, and fund
+  workflows passed live FMP MCP checks and deterministic regression tests.
+- **Complete:** The repository contains no exposed FMP credential.
 
 Phase 0 was completed on June 25, 2026. Key rotation was explicitly waived by
 the repository owner.
+
+Final validation on June 26, 2026:
+
+- `.app.json` and source-category JSON parsed successfully.
+- Focused Public Equity/FMP tests passed.
+- Full `plugins/financial-markets` test discovery passed.
+- `git diff --check` passed.

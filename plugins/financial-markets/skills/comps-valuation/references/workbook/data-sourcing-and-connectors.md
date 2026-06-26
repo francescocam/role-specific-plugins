@@ -8,7 +8,7 @@ Prioritize sources in this order:
 
 1. **User-provided model and files**: Treat the current workbook and uploaded files as the starting record. Preserve the user's work product and identify where it is incomplete or stale.
 2. **Callable connected routes or exports**: Search Drive, Sheets, Slack, email, Notion, data-room files, internal research, and prior models only when the runtime exposes a scoped route or the user provides an export.
-3. **Licensed market-data routes or exports**: Use sources such as FactSet, Capital IQ, Bloomberg, Refinitiv, PitchBook, Visible Alpha, AlphaSense, Koyfin, or BamSEC only through a callable runtime route or a user-provided export.
+3. **Structured market-data routes or exports**: Use callable `financial_modeling_prep` first for ordinary public-market data. Use specialist sources such as FactSet, Capital IQ, Bloomberg, Refinitiv, PitchBook, Visible Alpha, AlphaSense, Koyfin, or BamSEC only through a callable runtime route or a user-provided export.
 4. **Primary issuer/regulatory sources**: SEC EDGAR, company filings, earnings releases, investor presentations, exchange filings, prospectuses, and annual reports.
 5. **High-quality secondary sources**: Recognized financial data vendors, exchange websites, industry associations, and reputable news sources.
 6. **General search**: Use web search only after trying better sources, or when triangulating gaps. Clearly mark lower-confidence data.
@@ -40,7 +40,7 @@ Use internal documents for context, peer rationale, KPI definitions, and judgmen
 
 ### Market-data systems
 
-If available, prefer market-data systems for:
+If callable, use `financial_modeling_prep` as the normal structured public-market route for prices, profiles, statements, estimates, ownership, and ETF/index context. Use optional specialist market-data systems or user-provided exports when they supply needed fields FMP lacks. If available, prefer market-data systems for:
 
 - Market price, market cap, shares outstanding, diluted shares, net debt, preferred stock, minority interest, and EV.
 - Consensus estimates for revenue, EBITDA, EBIT, EPS, FCF, KPIs, and fiscal year calendars.

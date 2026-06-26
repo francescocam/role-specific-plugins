@@ -93,7 +93,7 @@ Avoid generic next actions:
 
 ## Unsupported Connector Or Provider Access
 
-When a requested Bloomberg, FactSet, S&P Capital IQ, CapIQ, LSEG, Refinitiv, Daloopa, PitchBook, Morningstar, broker, email, collaboration-app, or internal data connector is not callable in the runtime, do not pretend to have pulled it. Use user-provided exports if available, request the specific export, label the missing evidence as `missing_required_source`, and keep the evidence posture preliminary or screen-grade.
+Use callable `financial_modeling_prep` as the normal structured public-market data route when it is exposed in the runtime, while preserving its provider-standardized limits. When a requested Bloomberg, FactSet, S&P Capital IQ, CapIQ, LSEG, Refinitiv, Daloopa, PitchBook, Morningstar, broker, email, collaboration-app, or internal data connector is not callable in the runtime, do not pretend to have pulled it. Use user-provided exports if available, request the specific export, label the missing evidence as `missing_required_source`, and keep the evidence posture preliminary or screen-grade.
 
 ## Credit Markets Handoff Pattern
 

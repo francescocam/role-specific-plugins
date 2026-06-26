@@ -19,6 +19,8 @@ Required columns:
 
 `source_id` cannot be blank for decision-grade outputs. If deterministic helpers emit `SRC-UNSPECIFIED`, treat it as a blocking provenance error until a real `SRC-###` ID from `Source_Index` is assigned.
 
+For FMP provider rows, include the FMP tool or endpoint name, request parameters, returned identifiers, provider as-of date, source URL, retrieval timestamp, plan/coverage caveats, and any primary-source reconciliation status in `file_tab_page_url_or_location` or `notes` when a narrower column is not available.
+
 ## Normalized_Financials_Long
 
 Required columns:
@@ -42,6 +44,8 @@ Required columns:
 - `normalization_note`
 
 Use `kpi_schedule` with `issuer_management_claim` for issuer outlook or guidance. Use `consensus_estimate` only for an external consensus estimate or provider forecast, with `estimate_consensus`; do not classify company guidance as consensus.
+
+For FMP-derived rows, `normalization_note` must preserve listing-versus-company treatment and any field-specific unit or FX handling when relevant. FMP-standardized values use `fact_provider_standardized` unless directly reconciled to a primary source; FMP estimate, rating, target-price, or forecast rows use `estimate_consensus`.
 
 ## Wide outputs
 

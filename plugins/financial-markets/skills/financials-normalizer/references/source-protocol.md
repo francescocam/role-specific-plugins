@@ -11,7 +11,7 @@ Prefer the highest-ranked available source that the user is permitted to access.
 | 1 | User-provided source package | Uploaded model, company financial workbook, issuer supplement, provider export, consensus extract, management report, internal public-company support file | Treat as governing for the user's task unless contradicted by explicit instructions or a higher-control connected system. |
 | 2 | Callable connected internal system of record | ERP/GL, planning/EPM, data warehouse, HRIS, CRM, procurement, treasury, subledger when actually available in runtime | Treat as authoritative only when the connector/tool is callable and scoped correctly; otherwise request/export and label the gap. |
 | 3 | Primary public-company source | 10-K, 10-Q, 8-K, earnings release, investor deck, transcript from company/primary provider | Treat as authoritative for public reported financials. |
-| 4 | Trusted financial data provider export or callable provider connector | User-provided FactSet, S&P Global, LSEG, Daloopa, CapIQ-like, Bloomberg-like, consensus, or market-data export; callable provider only if available in runtime | Treat as standardized; cite provider/as-of timestamp and verify critical values against primary sources when material. Do not imply live access. |
+| 4 | Trusted financial data provider export or callable provider connector | Callable `financial_modeling_prep` for structured public-market data; user-provided FactSet, S&P Global, LSEG, Daloopa, CapIQ-like, Bloomberg-like, consensus, or market-data export; other callable provider only if available in runtime | Treat as standardized; cite provider/as-of timestamp and verify critical values against primary sources when material. Do not imply live access. |
 | 5 | Secondary public source | News, market-data sites, aggregator pages, broker summaries, web snippets | Use only for context or fallback; mark lower confidence. |
 | 6 | User assumption | User-provided forecast, case, target, or scenario assumption | Label as `assumption_user_provided`. |
 | 7 | Assistant inference | Mapping inference, calculated placeholder, rough estimate | Avoid when possible; label `assumption_inferred`, disclose, and keep confidence low. |
@@ -30,6 +30,7 @@ Assign `freshness_status` in `Source_Index`:
 
 Default stale-data rules:
 - Public companies: latest-quarter work should prefer the latest 10-Q/10-K and earnings release; mark prior-period-only data as stale if a newer period is available.
+- FMP-sourced public-market data: retain the FMP tool or endpoint, request parameters, retrieval time, provider as-of date, period/date bounds, identifiers, currency, and units. Treat FMP values as provider-standardized until reconciled to a linked filing, issuer document, transcript, or release.
 - Earnings work: pre-print data becomes stale once the company reports; post-print data is preliminary until filing and transcript are available.
 - Internal company or accounting exports: actuals are preliminary until close status is final or the user accepts a soft-close view.
 - User-provided source packages: data can be stale if the package lacks a recent reporting period, as-of date, provider timestamp, or updated model support.
@@ -67,6 +68,7 @@ When conflicts appear:
 
 - Use `fact_source_reported` only for values directly visible in a cited source or connected system.
 - Use `fact_provider_standardized` for provider-normalized values even if they are based on filings.
+- Use `fact_provider_standardized` for FMP-normalized fields, including market data, profiles, ownership, ESG, fund/index context, and reported values that have not been directly checked in the linked primary source.
 - Use `derived_calculation` when the value is mathematically calculated from cited inputs.
 - Use `issuer_management_claim` for issuer, company, or management assertions that need evidence support.
 - Store issuer outlook or guidance as `kpi_schedule` rows labeled `issuer_management_claim`; do not treat it as `consensus_estimate`.
@@ -76,7 +78,18 @@ When conflicts appear:
 - Use `assumption_user_provided` for explicit user assumptions.
 - Use `assumption_inferred` only when necessary; explain why and how to replace it with evidence.
 - Use `estimate_consensus` with `consensus_estimate` only for externally sourced consensus/provider forecasts.
+- Use `estimate_consensus` for FMP analyst estimates, ratings, price targets, and forecast fields; do not mix them with issuer guidance or analyst/user assumptions.
 - Use `stale_source` when a source may be superseded for the current decision.
 - Use `contradicted_source` when source conflict is material and unresolved.
 - Use `missing_required_source` instead of filling unsupported blanks.
 - Use `unknown` only when evidence type cannot be determined.
+
+## FMP-specific source handling
+
+When Financial Modeling Prep is the callable provider route:
+
+- Preserve listing identity. Keep symbol, exchange, CIK, ISIN, CUSIP, security type, and company name where returned, and state whether the row is listing-level or operating-company-level.
+- Preserve financial-statement metadata: fiscal year, period, period end, filing date, reported currency, units, source link, retrieval timestamp, and FMP request parameters.
+- Preserve cross-market metadata: native currency, FX rate, FX date, FX source, and whether the converted field was a price, per-share value, statement value, or market-cap value.
+- Do not promote FMP ratios, scores, key metrics, owner earnings, valuation outputs, or provider-calculated analytics to canonical plugin metrics without an approved formula and raw source inputs.
+- Add QA flags for secondary-listing market-cap duplication, country-versus-venue confusion, pence/pounds or other unit ambiguity, plan-limited endpoints, stale values, missing fields, source conflicts, and unreconciled provider-standardized values.

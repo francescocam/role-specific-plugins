@@ -80,7 +80,7 @@ Output:
 1. User-provided files, pasted context, active workbook/deck, and explicit assumptions.
 2. Callable connected routes or user-provided exports: portfolio holdings, risk systems, OMS/EMS exports, market data providers, research systems, broker files, and internal models.
 3. Primary market/company sources: filings, releases, presentations, transcripts, exchange/index/ETF sponsor data, issuer docs, exchange/index/ETF sponsor data, debt maturity schedules when relevant to common-equity risk, and official equity/security terms.
-4. Callable third-party routes or user-provided exports: Bloomberg, FactSet, LSEG, S&P Capital IQ, MSCI/Barra, Axioma, Refinitiv, broker estimates, rating agencies, TRACE/FINRA, OCC/options data, short interest data, and consensus providers.
+4. Callable third-party routes or user-provided exports: callable `financial_modeling_prep` for ordinary public-market data, estimates, ownership, ETF/index context, and issuer reference data; Bloomberg, FactSet, LSEG, S&P Capital IQ, MSCI/Barra, Axioma, Refinitiv, broker estimates, rating agencies, TRACE/FINRA, OCC/options data, short interest data, and consensus providers through callable routes or user-provided exports for specialist coverage.
 5. Public web fallback. Use only when better sources are unavailable and label the limitation.
 
 ## Freshness rules

@@ -27,6 +27,30 @@ Before calling FMP, read `references/connector-playbook.md`. For a workbook work
 
 Never invent symbols, exchanges, CIKs, periods, source dates, estimates, filing links, or unsupported provider capabilities.
 
+## Evidence And Normalization Contract
+
+Every FMP-derived material value must carry enough metadata to be reviewed or refreshed later:
+
+- stable FMP tool or endpoint name and the exact request parameters used;
+- user-requested symbol plus exchange, CIK, ISIN, CUSIP, company name, or other returned security identifiers where available;
+- retrieval timestamp, provider as-of date, reported date, filing date, transcript date, or event date as applicable;
+- fiscal year, fiscal period, period end, filing date, currency, and units for financial statements, estimates, KPIs, or per-share values;
+- native currency plus explicit FX rate, FX observation date, and FX source for cross-market calculations;
+- listing-level versus operating-company-level treatment, including whether the value may duplicate exposure across multiple listings or share classes;
+- source URL, SEC accession, filing link, transcript link, or issuer/filing locator when returned by FMP.
+
+Use canonical evidence labels consistently:
+
+- `fact_provider_standardized` for FMP-normalized reported facts, profiles, market data, ownership, ESG, ratings, holders, fund/index data, or other provider-standardized fields;
+- `estimate_consensus` for FMP analyst estimates, consensus, ratings, price targets, or forecast fields;
+- `fact_source_reported` only after checking the value directly in a linked filing, issuer release, transcript, or other primary source;
+- `derived_calculation` for calculations made from cited inputs, with the formula and input source IDs preserved;
+- `missing_required_source`, `stale_source`, or `contradicted_source` when FMP lacks the lane, appears stale, or conflicts with another material source.
+
+Do not promote FMP ratios, scores, key metrics, owner earnings, intrinsic value, valuation outputs, or other provider-calculated analytics to canonical plugin metrics unless an owning workflow has an approved formula and cites the raw inputs. FMP-precalculated analytics may be used as diagnostics or screen-grade context only, and must remain labeled as provider-standardized.
+
+Material financial, valuation, catalyst, or sizing conclusions require primary-source reconciliation when practicable. If reconciliation is not performed, state that the value is provider-standardized and identify what source would make it decision-grade.
+
 ## Category Boundaries
 
 - `company_filings_ir`: reported statements, company profiles, SEC filing discovery, press releases, and supported disclosure data. Use linked primary filings for decisive verification when material.
@@ -34,8 +58,18 @@ Never invent symbols, exchanges, CIKs, periods, source dates, estimates, filing 
 - `market_data_estimates`: quotes, price history, market capitalization, estimates, ratings, price targets, ownership, calendars, and supported fund/index data.
 - `portfolio_models_trackers`: read-only market, estimate, ownership, and reference inputs. Do not represent FMP as a portfolio system or brokerage.
 
+## Known FMP Hazards
+
+- Secondary listings, ADRs, receipts, OTC variants, and share classes can carry full-company market capitalization or duplicated company exposure; label listing-level work and do not silently aggregate to an operating-company view.
+- Country or domicile is company metadata, not a substitute for exchange, venue, or trading-line filters.
+- Pence/pounds, GBp/GBP, per-share units, scale, and other currency-unit issues need field-specific treatment; never apply one blanket conversion to every monetary field.
+- Estimates, ratings, price targets, and consensus fields are provider aggregates, not broker-level estimate detail or the full underlying model history.
+- Transcript, ESG, 13F, insider, ETF, fund, index, news, and other endpoint availability is plan-dependent; empty or denied responses are entitlement/coverage facts, not proof the event or dataset does not exist.
+- U.S. SEC coverage is not equivalent to complete global filing, exchange filing, investor-presentation, or issuer-IR document coverage.
+- Provider-standardized statements can differ from issuer presentation, restated filings, segment definitions, adjusted metrics, or other vendor exports. Preserve conflicts instead of overwriting them.
+
 ## Output And Recovery
 
 Prefer narrow calls over broad bulk reads. If a call fails, inspect the live tool schema, reduce the symbol/date/period scope, and retry once with the smallest valid request. If access is plan-limited or the result is missing, name the exact lane and fallback needed.
 
-Identify FMP as the provider for values returned by FMP. Do not imply that linked filings, uploaded documents, internal data, or calculations originated from FMP.
+Identify FMP as the provider for values returned by FMP. Add visible data-quality flags for stale, missing, conflicting, suspicious, plan-limited, listing-ambiguous, currency-ambiguous, or unreconciled values. Do not imply that linked filings, uploaded documents, internal data, or calculations originated from FMP.
