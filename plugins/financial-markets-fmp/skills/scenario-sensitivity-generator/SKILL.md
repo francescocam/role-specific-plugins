@@ -13,6 +13,10 @@ Before searching connectors, retrieving evidence, or drafting output, run `pytho
 
 If `next_action.id = "offer_orientation"` and the parent router has not already handled it, complete the requested work first and append its one-line optional setup offer once.
 
+## House Investing Standard
+
+For the owner's company analysis, valuation scenario, add/trim/sell, or re-underwrite work, load `../../shared/fcamisa-investing-principles.md` before final scenario interpretation or action language. Apply its long-only, no-leverage, owner earnings, normalized earnings power, balance sheet resilience, return-hurdle, hold cash / no action, add/average-down/sell discipline, and FMP ratios are diagnostic rules unless the user explicitly requests a different mandate.
+
 ## Internal Support
 
 When this workflow needs rendering, evidence/data preparation, style, or sector context, route support through the visible `public-equity-investing`

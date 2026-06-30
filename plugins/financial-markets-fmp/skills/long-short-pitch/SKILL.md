@@ -17,6 +17,10 @@ If `next_action.id = "offer_orientation"` and the parent router has not already 
 
 Load `../../shared/workflow-source-resolution.md`. Use `source_category_plan` lazily and attempt only the categories needed for this workflow: `company_filings_ir`, `earnings_transcripts_presentations`, `internal_research`, `portfolio_models_trackers`, and `market_data_estimates`.
 
+### House Investing Standard
+
+For the owner's company analysis or long-only pitch work, load `../../shared/fcamisa-investing-principles.md` before final actionability, expression, or sizing language. Apply its long-only, no-leverage, owner earnings, normalized earnings power, balance sheet resilience, return-hurdle, hold cash / no action, add/average-down/sell discipline, and FMP ratios are diagnostic rules unless the user explicitly requests a different mandate.
+
 ## Deliverable Intake
 
 Apply the presentation-surface precedence in `../../shared/deliverable-intake-policy.md`. This workflow's natural artifact is a polished standalone HTML trade-pitch report. Do not choose chat-only output unless the user explicitly requests a lightweight response.

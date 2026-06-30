@@ -17,6 +17,10 @@ If `next_action.id = "offer_orientation"` and the parent router has not already 
 
 Load `../../shared/workflow-source-resolution.md`. Use `source_category_plan` lazily and attempt only the categories needed for this workflow: `company_filings_ir`, `market_data_estimates`, and `portfolio_models_trackers`.
 
+### House Investing Standard
+
+For the owner's company analysis or valuation read-through, load `../../shared/fcamisa-investing-principles.md` before final valuation posture or action language. Apply its long-only, no-leverage, owner earnings, normalized earnings power, balance sheet resilience, return-hurdle, hold cash / no action, and FMP ratios are diagnostic rules; relative valuation is triangulation and must not manufacture value.
+
 ## Deliverable Intake And Judgment Standard
 
 Apply the presentation-surface precedence in `../../shared/deliverable-intake-policy.md`. This workflow's natural artifact is a polished standalone HTML valuation report for report mode or an XLSX workbook when reusable comps calculations and tables are central. Do not choose chat-only output unless the user explicitly requests a lightweight response.

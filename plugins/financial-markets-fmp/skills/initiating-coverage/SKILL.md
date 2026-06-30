@@ -17,6 +17,10 @@ If `next_action.id = "offer_orientation"` and the parent router has not already 
 
 Load `../../shared/workflow-source-resolution.md`. Use `source_category_plan` lazily and attempt only the categories needed for this workflow: `company_filings_ir`, `earnings_transcripts_presentations`, `internal_research`, `portfolio_models_trackers`, and `market_data_estimates`.
 
+### House Investing Standard
+
+For the owner's company analysis or personal initiation work, load `../../shared/fcamisa-investing-principles.md` before final recommendation, target, or ownership language. Apply its long-only, no-leverage, owner earnings, normalized earnings power, balance sheet resilience, return-hurdle, hold cash / no action, add/average-down/sell discipline, and FMP ratios are diagnostic rules unless the user explicitly requests a different mandate.
+
 ## Internal Support
 
 When this workflow needs rendering, evidence/data preparation, style, or sector context, route support through the visible `public-equity-investing` router and its bundled internal playbooks. Route workbook or model QA through the visible `model-audit-tieout` workflow.

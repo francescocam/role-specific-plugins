@@ -19,6 +19,10 @@ Use `source_category_plan` from preflight to resolve only catalogued source cate
 
 The source-category plan covers the catalogued Public Equity Investing sources below. Use `references/source-and-evidence.md` for the broader evidence hierarchy and freshness rules.
 
+### House Investing Standard
+
+For issuer baselines prepared for the owner's company analysis, load `../../shared/fcamisa-investing-principles.md` before composing the investor read or recommended next route. Apply its long-only, no-leverage, owner earnings, normalized earnings power, balance sheet resilience, return-hurdle, hold cash / no action, and FMP ratios are diagnostic rules unless the user explicitly requests a different mandate.
+
 ### Workflow Sources
 
 When this skill uses a source category, use it for the following information. These are semantic source categories, not fixed connector names.

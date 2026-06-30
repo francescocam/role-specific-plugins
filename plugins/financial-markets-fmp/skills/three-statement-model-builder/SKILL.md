@@ -13,6 +13,10 @@ Before searching connectors, retrieving evidence, or drafting output, run `pytho
 
 If `next_action.id = "offer_orientation"` and the parent router has not already handled it, complete the requested work first and append its one-line optional setup offer once.
 
+## House Investing Standard
+
+For the owner's company analysis or operating-model-supported valuation, load `../../shared/fcamisa-investing-principles.md` before final valuation, target, or action language. Apply its long-only, no-leverage, owner earnings, normalized earnings power, balance sheet resilience, return-hurdle, hold cash / no action, and FMP ratios are diagnostic rules; model complexity must not manufacture value when simple owner-earnings math does not clear the hurdle.
+
 ## Deliverable Intake
 
 Apply the presentation-surface precedence in `../../shared/deliverable-intake-policy.md`. This workflow's natural artifact is an XLSX three-statement model workbook. Do not choose chat-only output unless the user explicitly requests a lightweight response.

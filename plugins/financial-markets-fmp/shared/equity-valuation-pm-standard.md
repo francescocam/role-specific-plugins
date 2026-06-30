@@ -1,6 +1,6 @@
 # Equity Valuation PM Standard
 
-Use this standard whenever Public Equity Investing work produces a model, valuation, scenario table, model update, comps package, or model audit. Pair it with `shared/pm-judgment-heuristics.md`.
+Use this standard whenever Public Equity Investing work produces a model, valuation, scenario table, model update, comps package, or model audit. Pair it with `shared/pm-judgment-heuristics.md`. For the owner's company analysis, also load `shared/fcamisa-investing-principles.md` and apply its owner earnings, normalized earnings power, balance sheet resilience, 15%+ expected annualized common-stock hurdle, 10% to 12%+ great-business exception, 20%+ higher-risk/complex-instrument hurdle, hold cash / no action discipline, and FMP ratios are diagnostic rule.
 
 ## Required PM Questions
 

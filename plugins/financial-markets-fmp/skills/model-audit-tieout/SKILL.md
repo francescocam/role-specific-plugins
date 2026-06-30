@@ -13,6 +13,10 @@ Before searching connectors, retrieving evidence, or drafting output, run `pytho
 
 If `next_action.id = "offer_orientation"` and the parent router has not already handled it, complete the requested work first and append its one-line optional setup offer once.
 
+## House Investing Standard
+
+For the owner's company analysis or model audit, load `../../shared/fcamisa-investing-principles.md` before final readiness, valuation, or action language. Apply its long-only, no-leverage, owner earnings, normalized earnings power, balance sheet resilience, return-hurdle, hold cash / no action, and FMP ratios are diagnostic rules; a mechanically clean model is not decision-grade if it violates the house standard.
+
 ## Internal Support
 
 When the audit requires evidence control, generic data cleaning, dashboard rendering, style application, or sector context, route that support through the visible `public-equity-investing` router and its bundled internal playbooks. This visible skill remains the owner of the model-review deliverable.
